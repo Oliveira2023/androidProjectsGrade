@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Firebase_teste</string>
+    <string name="btn_remover">Remover</string>
+    <string name="btn_atualizar">Atualizar</string>
+    <string name="btn_pesquisar">Pesquisar</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="email">Email</string>
+    <string name="register">Don\'t have an account? Register</string>
+    <string name="login">Login</string>
+    <string name="password_hint">Password</string>
+</resources>

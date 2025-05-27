@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Jogar">
+
+    <TextView
+        android:id="@+id/pergunta"
+        style="@style/MeuTextoPadrao"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#c4ffe3"
+        android:gravity="center"
+        android:text="@string/pergunta" />
+
+    <TextView
+        android:id="@+id/resposta"
+        style="@style/MeuTextoPadrao"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#DCE0FB"
+        android:gravity="center"
+        android:layout_below="@+id/pergunta"
+        android:layout_marginTop="20dp"
+        android:text="@string/resposta" />
+    
+    <LinearLayout
+        android:id="@+id/layoutBotoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="0dp"
+        android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnExibir"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_marginStart="5dp"
+                android:textSize="18sp"
+                android:text="@string/exibir" />
+
+            <Button
+                android:id="@+id/btnPular"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:layout_weight="0"
+                android:textSize="18sp"
+                android:drawableEnd="@android:drawable/ic_media_play"
+                android:text="@string/pular" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCadastrar"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:textSize="18sp"
+
+                android:text="@string/cadastrar" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
+
+

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">JogoPRapp_aula</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="pergunta">Pergunta</string>
+    <string name="resposta">Resposta</string>
+    <string name="pular">Pular</string>
+    <string name="exibir">Ex. Resposta</string>
+    <string name="cadastrar">Cadastrar perguntas e respostas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="qualPergunta">QUAL A PERGUNTA</string>
+    <string name="qualResposta">QUAL A RESPOSTA</string>
+    <string name="cad_pergunta">Pergunta</string>
+    <string name="cad_resposta">Resposta</string>
+    <string name="jogar">Jogar</string>
+
+</resources>
