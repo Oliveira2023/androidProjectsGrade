@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -88,6 +89,28 @@ public class CadatrarPergunta extends Fragment {
                       .commit();
           }
         });
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String pergunta = cad_pergunta.getText().toString();
+                String resposta = cad_resposta.getText().toString();
 
+                if(pergunta.isEmpty() || resposta.isEmpty()){
+                    cad_pergunta.setError("Preencha a pergunta");
+                    cad_resposta.setError("Preencha a resposta");
+                }else{
+                    Questoes questoes = new Questoes(pergunta, resposta);
+
+                    BancoDados bancoDados = BancoDados.getDatabase(getContext());
+                    bancoDados.questoesDao().inserirQuestao(questoes);
+
+                    cad_pergunta.setText("");
+                    cad_resposta.setText("");
+
+                    Toast.makeText(getContext(), "Pergunta cadastrada com sucesso", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
     }
 }
