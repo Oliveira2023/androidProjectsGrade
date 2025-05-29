@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Jogar#newInstance} factory method to
@@ -24,6 +26,7 @@ public class Jogar extends Fragment {
     private Button btnPular;
     private TextView pergunta;
     private TextView resposta;
+    List<Questoes> questoesList;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,6 +84,10 @@ public class Jogar extends Fragment {
         pergunta = getActivity().findViewById(R.id.pergunta);
         resposta = getActivity().findViewById(R.id.resposta);
 
+        questoesList = BancoDados.getDatabase(getContext()).questoesDao().pesquisarTodasQuestoes();
+
+        proximaQuestao();
+
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +97,32 @@ public class Jogar extends Fragment {
                         .commit();
             }
         });
+        btnPular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                proximaQuestao();
+            }
+        });
+        btnExibir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resposta.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private void proximaQuestao() {
+        if (!questoesList.isEmpty()) {
+            int indice = (int) (Math.random() * questoesList.size());
+            Questoes questao = questoesList.get(indice);
+            pergunta.setText(questao.getPergunta());
+            resposta.setText(questao.getResposta());
+            resposta.setVisibility(View.INVISIBLE);
+            questoesList.remove(indice);
+        } else {
+            pergunta.setText("Nenhuma pergunta disponível");
+            resposta.setText("");
+        }
     }
 
 }

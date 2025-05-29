@@ -75,42 +75,48 @@ public class CadatrarPergunta extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnJogar = getActivity().findViewById(R.id.jogar);
-        btnCadastrar = getActivity().findViewById(R.id.cadastrar);
-        cad_pergunta = getActivity().findViewById(R.id.cad_pergunta);
-        cad_resposta = getActivity().findViewById(R.id.cad_resposta);
+        btnJogar = view.findViewById(R.id.jogar);
+        btnCadastrar = view.findViewById(R.id.cadastrar);
+        cad_pergunta = view.findViewById(R.id.cad_pergunta);
+        cad_resposta = view.findViewById(R.id.cad_resposta);
 
-        btnJogar.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              getActivity().getSupportFragmentManager().beginTransaction()
-                      .replace(R.id.main, new Jogar())
-                      .addToBackStack(null)
-                      .commit();
-          }
-        });
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String pergunta = cad_pergunta.getText().toString();
-                String resposta = cad_resposta.getText().toString();
-
-                if(pergunta.isEmpty() || resposta.isEmpty()){
-                    cad_pergunta.setError("Preencha a pergunta");
-                    cad_resposta.setError("Preencha a resposta");
-                }else{
-                    Questoes questoes = new Questoes(pergunta, resposta);
-
-                    BancoDados bancoDados = BancoDados.getDatabase(getContext());
-                    bancoDados.questoesDao().inserirQuestao(questoes);
-
-                    cad_pergunta.setText("");
-                    cad_resposta.setText("");
-
-                    Toast.makeText(getContext(), "Pergunta cadastrada com sucesso", Toast.LENGTH_SHORT).show();
-
+        if (btnJogar != null) {
+            btnJogar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (getActivity() == null) return;
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.main, new Jogar())
+                            .addToBackStack(null)
+                            .commit();
                 }
-            }
-        });
+            });
+        }
+        if (btnCadastrar != null) {
+            btnCadastrar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String pergunta = cad_pergunta.getText().toString();
+                    String resposta = cad_resposta.getText().toString();
+
+                    if (pergunta.isEmpty() || resposta.isEmpty()) {
+                        cad_pergunta.setError("Preencha a pergunta");
+                        cad_resposta.setError("Preencha a resposta");
+                    } else {
+                        Questoes questoes = new Questoes(pergunta, resposta);
+
+                        if (getContext() == null) return;
+                        BancoDados bancoDados = BancoDados.getDatabase(getContext());
+                        bancoDados.questoesDao().inserirQuestao(questoes);
+
+                        cad_pergunta.setText("");
+                        cad_resposta.setText("");
+
+                        Toast.makeText(getContext(), "Pergunta cadastrada com sucesso", Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+            });
+        }
     }
 }
