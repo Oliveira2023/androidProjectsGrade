@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Pagamento de conta</string>
+    <string name="valor_dinheiro">Digite o valor do dinheiro</string>
+    <string name="limpar_valores">Limpar Valores</string>
+    <string name="calcular">Calcular</string>
+    <string name="taxa_service">Valor da taxa de serviço</string>
+    <string name="valor_taxa">R$ 0</string>
+    <string name="total">Total</string>
+    <string name="valor_total">R$ 0</string>
+    <string name="troco">Troco</string>
+    <string name="valor_troco">R$ 0</string>
+    <string name="titulo_principal">Pagamento de Conta</string>
+    <string name="descr_valor_da_conta">Valor da Conta</string>
+    <string name="hint_valor_da_conta">Digite o Valor da conta</string>
+    <string name="descr_dinhero">Dinhero</string>
+</resources>

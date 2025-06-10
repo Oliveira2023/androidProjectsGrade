@@ -22,10 +22,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.dev_oliveira.firebase_teste" />
+                  <option name="mobileSdkAppId" value="1:707887882758:android:174d2040fff1b60d321987" />
+                  <option name="projectId" value="fir-teste-android" />
+                  <option name="projectNumber" value="707887882758" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
