@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var sharedPreferences2: SharedPreferences
+//    private lateinit var sharedPreferences2: SharedPreferences
     private lateinit var yearPicker: NumberPicker
     private lateinit var radioGroup: RadioGroup
     private lateinit var confirmarButton: Button
@@ -29,7 +29,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btnAddTitulo: Button
     private lateinit var nomeEmpresa: TextView
 
-    private val PREFS_NAME = "MyPrefsFile"
+    companion object {
+        const val DADOS_FATURAMENTO = "MeuFaturamento"
+        const val NOME_EMPRESA = "nomeEmpresa"
+    }
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        sharedPreferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences(DADOS_FATURAMENTO, MODE_PRIVATE)
 
         yearPicker = findViewById(R.id.yearPicker)
         confirmarButton = findViewById(R.id.executeButton)
@@ -77,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnAddTitulo.setOnClickListener {
-            val intent = Intent(this, activity_personalizar::class.java)
+            val intent = Intent(this, Personalizar::class.java)
             startActivity(intent)
         }
 
@@ -91,8 +94,8 @@ class MainActivity : AppCompatActivity() {
      override fun onResume() {
         super.onResume()
 
-        sharedPreferences2 = getSharedPreferences(SettingsManager.ARQUIVO_PREFERENCIAS, MODE_PRIVATE)
-        val nomeFantasia = sharedPreferences2.getString("nomeFantasia", "")
+        sharedPreferences = getSharedPreferences(DADOS_FATURAMENTO, MODE_PRIVATE)
+        val nomeFantasia = sharedPreferences.getString("nomeFantasia", "")
         if (!nomeFantasia.isNullOrEmpty()) {
             nomeEmpresa.text = nomeFantasia
         }
@@ -131,8 +134,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    companion object {
-        val MyPrefsFile: String? = null
-    }
+
 
 }
