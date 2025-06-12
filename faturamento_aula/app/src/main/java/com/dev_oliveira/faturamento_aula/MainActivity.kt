@@ -115,7 +115,7 @@ class MainActivity : AppCompatActivity() {
         exibirSaldo(ano)
     }
     fun removerValor(ano: Int, valor: Float) {
-        val saldo = saldoAtual.text.toString().toFloatOrNull() ?: 0f
+        val saldo = sharedPreferences.getFloat(ano.toString(), 0f)
         if (saldo < valor) {
             Toast.makeText(this, "Saldo insuficiente", Toast.LENGTH_SHORT).show()
             return
