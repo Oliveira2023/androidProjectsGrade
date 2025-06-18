@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">App Noticias</string>
+    <string name="hint">hint</string>
+    <string name="text_nome">Qual seu nome?</string>
+    <string name="app_noticias">App Noticias</string>
+    <string name="faixa_etaria">Selecione a Faixa Etária</string>
+    <string name="radiobutton20">Menos que 20 anos</string>
+    <string name="radiobutton30">Entre 21 a 30 anos</string>
+    <string name="radiobutton40">Entre 31 a 40 anos</string>
+</resources>
