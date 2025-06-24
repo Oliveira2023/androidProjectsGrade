@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">imc_aula</string>
+    <string name="imc">IMC</string>
+    <string name="altura">Altura em metros</string>
+    <string name="peso">Peso em kg</string>
+    <string name="hint_altura">Ex: 1.70</string>
+    <string name="hint_peso">Ex: 70</string>
+    <string name="calcular">Calcular IMC</string>
+    <string name="resultado_peso">0,00</string>
+    <string name="resultado">Seu IMC é: </string>
+    <string name="abaixo_peso">Abaixo do peso</string>
+    <string name="peso_normal">Peso normal</string>
+    <string name="sobrepeso">Sobrepeso</string>
+    <string name="obesidade_1">Obesidade grau 1</string>
+    <string name="obesidade_2">Obesidade grau 2</string>
+    <string name="obesidade_3">Obesidade grau 3</string>
+
+</resources>
