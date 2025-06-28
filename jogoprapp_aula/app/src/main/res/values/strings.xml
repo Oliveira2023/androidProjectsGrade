@@ -5,12 +5,14 @@
     <string name="resposta">Resposta</string>
     <string name="pular">Pular</string>
     <string name="exibir">Ex. Resposta</string>
-    <string name="cadastrar">Cadastrar perguntas e respostas</string>
+    <string name="cadastrar">Cadastrar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="qualPergunta">QUAL A PERGUNTA</string>
     <string name="qualResposta">QUAL A RESPOSTA</string>
     <string name="cad_pergunta">Pergunta</string>
     <string name="cad_resposta">Resposta</string>
     <string name="jogar">Jogar</string>
+    <string name="reiniciar">Reiniciar Perguntas</string>
+    <string name="cadastrarpr">Cadastrar Perguntas e respostas</string>
 
 </resources>

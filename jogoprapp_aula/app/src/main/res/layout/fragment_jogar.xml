@@ -24,48 +24,65 @@
         android:layout_below="@+id/pergunta"
         android:layout_marginTop="20dp"
         android:text="@string/resposta" />
-    
+
+    <Button
+        android:id="@+id/btnReiniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/resposta"
+        android:layout_marginTop="25dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/reiniciar" />
+
     <LinearLayout
         android:id="@+id/layoutBotoes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="0dp"
+
         android:layout_alignParentBottom="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingTop="10dp"
             android:orientation="horizontal">
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnExibir"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_weight="1"
-                android:layout_marginStart="5dp"
                 android:textSize="18sp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/btnpersonalizado"
                 android:text="@string/exibir" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPular"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
                 android:layout_weight="0"
                 android:textSize="18sp"
+                android:background="@drawable/btnpersonalizado"
                 android:drawableEnd="@android:drawable/ic_media_play"
                 android:text="@string/pular" />
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:orientation="horizontal">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnCadastrar"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:textSize="18sp"
-
-                android:text="@string/cadastrar" />
+                android:background="@drawable/btnpersonalizado"
+                android:text="@string/cadastrarpr" />
         </LinearLayout>
     </LinearLayout>
 

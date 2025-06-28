@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +28,7 @@ public class Jogar extends Fragment {
     private TextView pergunta;
     private TextView resposta;
     List<Questoes> questoesList;
+    private Button btnReiniciar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,11 +80,13 @@ public class Jogar extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        btnCadastrar = getActivity().findViewById(R.id.btnCadastrar);
-        btnExibir = getActivity().findViewById(R.id.btnExibir);
-        btnPular = getActivity().findViewById(R.id.btnPular);
-        pergunta = getActivity().findViewById(R.id.pergunta);
-        resposta = getActivity().findViewById(R.id.resposta);
+        btnCadastrar = requireActivity().findViewById(R.id.btnCadastrar);
+        btnExibir = requireActivity().findViewById(R.id.btnExibir);
+        btnPular = requireActivity().findViewById(R.id.btnPular);
+        pergunta = requireActivity().findViewById(R.id.pergunta);
+        resposta = requireActivity().findViewById(R.id.resposta);
+        btnReiniciar = requireActivity().findViewById(R.id.btnReiniciar);
+        btnReiniciar.setVisibility(View.INVISIBLE);
 
         questoesList = BancoDados.getDatabase(getContext()).questoesDao().pesquisarTodasQuestoes();
 
@@ -91,7 +95,7 @@ public class Jogar extends Fragment {
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
+                getParentFragmentManager().beginTransaction()
                         .replace(R.id.main, new CadatrarPergunta())
                         .addToBackStack(null)
                         .commit();
@@ -109,7 +113,16 @@ public class Jogar extends Fragment {
                 resposta.setVisibility(View.VISIBLE);
             }
         });
+        btnReiniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                questoesList = BancoDados.getDatabase(getContext()).questoesDao().pesquisarTodasQuestoes();
+                proximaQuestao();
+                btnReiniciar.setVisibility(View.INVISIBLE);
+            }
+        });
     }
+
 
     private void proximaQuestao() {
         if (!questoesList.isEmpty()) {
@@ -122,6 +135,7 @@ public class Jogar extends Fragment {
         } else {
             pergunta.setText("Nenhuma pergunta disponível");
             resposta.setText("");
+            btnReiniciar.setVisibility(View.VISIBLE);
         }
     }
 

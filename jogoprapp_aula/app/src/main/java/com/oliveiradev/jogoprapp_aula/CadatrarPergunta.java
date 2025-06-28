@@ -85,7 +85,7 @@ public class CadatrarPergunta extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if (getActivity() == null) return;
-                    getActivity().getSupportFragmentManager().beginTransaction()
+                    getParentFragmentManager().beginTransaction()
                             .replace(R.id.main, new Jogar())
                             .addToBackStack(null)
                             .commit();
