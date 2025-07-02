@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">conteudo_de_estudos</string>
+    <string name="sumario">SUMÁRIO</string>
+    <string name="conteudo">CONTEÚDO</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_sumario">Hello sumario fragment</string>
+    <string name="hello_conteudo">Hello conteudo fragment</string>
+</resources>
