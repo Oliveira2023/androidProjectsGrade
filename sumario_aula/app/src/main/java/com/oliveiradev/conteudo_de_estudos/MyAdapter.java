@@ -27,7 +27,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public MyViewHolder(View itemView) {
             super(itemView);
             // Encontra a View no layout do item pelo ID
-            itemTextView = itemView.findViewById(R.id.item_text_view);
+            itemTextView = itemView.findViewById(R.id.item_text);
         }
     }
 

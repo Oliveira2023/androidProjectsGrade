@@ -8,6 +8,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        setContentView(R.layout.activity_main);
+
         btnSumario = findViewById(R.id.btnSumario);
         btnConteudo = findViewById(R.id.btnConteudo);
 
@@ -28,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         Sumario sumarioFragment = new Sumario();
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.mainframe, conteudoFragment)
+                .replace(R.id.mainframe, sumarioFragment)
                 .commit();
 
         btnSumario.setOnClickListener(v -> {
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         );
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars()  | WindowInsetsCompat.Type.displayCutout());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
