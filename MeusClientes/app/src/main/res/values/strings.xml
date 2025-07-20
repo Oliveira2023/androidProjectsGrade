@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Meus Clientes</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="text_cadastro">Cadastro de Clientes</string>
+    <string name="text_nome">Digite o nome do Cliente</string>
+    <string name="text_email">Digite o Email do Cliente</string>
+    <string name="hint_nome">Nome</string>
+    <string name="hint_email">Email</string>
+    <string name="text_telefone">Digite o telefone do Cliente</string>
+    <string name="hint_telefone">Telefone fixo</string>
+    <string name="text_local">Digite o local do Cliente</string>
+    <string name="hint_local">Cidade, endereço, referência...</string>
+    <string name="text_observacoes">Observações do cliente</string>
+    <string name="hint_observacoes">Anotações sobre o cliente</string>
+    <string name="text_celular">Digite o celular</string>
+    <string name="hint_celular">WhatsApp</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="cancelar">Cancelar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detalhes_do_cliente">Detalhes do Cliente</string>
+    <string name="nome_do_cliente">Nome do Cliente</string>
+    <string name="email">Email</string>
+    <string name="celular">Celular</string>
+    <string name="obs_cliente">Observações</string>
+</resources>
