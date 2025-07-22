@@ -102,17 +102,17 @@ public class Sumario extends Fragment {
                 layoutManager.getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        ViewCompat.setOnApplyWindowInsetsListener(view, (v, insets) -> {
-            Insets systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout());
-            int originalPaddingLeft = v.getPaddingLeft();
-            int originalPaddingRight = v.getPaddingRight();
-            v.setPadding(originalPaddingLeft + systemBars.left,
-                    systemBars.top,
-                    originalPaddingRight + systemBars.right),
-                    systemBars.bottom
-            return insets;
-        });
-        }
+//        ViewCompat.setOnApplyWindowInsetsListener(view, (v, insets) -> {
+//            Insets systemBars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.displayCutout());
+//            int originalPaddingLeft = v.getPaddingLeft();
+//            int originalPaddingRight = v.getPaddingRight();
+//            v.setPadding(originalPaddingLeft + systemBars.left,
+//                    systemBars.top,
+//                    originalPaddingRight + systemBars.right),
+//                    systemBars.bottom
+//            return insets;
+//        });
+//        }
 
     }
 
