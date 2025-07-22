@@ -13,6 +13,7 @@ public abstract class BancoDados extends RoomDatabase {
 
     private static BancoDados INSTANCE;
 
+    // Modelo Singleton
     public static BancoDados getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (BancoDados.class) {

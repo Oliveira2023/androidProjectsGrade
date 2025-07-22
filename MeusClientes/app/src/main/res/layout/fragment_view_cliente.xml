@@ -16,7 +16,6 @@
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/Cliente"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/nome_do_cliente"
@@ -30,7 +29,6 @@
                 style="@style/Descricao_texto"/>
 
         <TextView
-            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/email"
@@ -45,7 +43,6 @@
 
 
         <TextView
-            android:id="@+id/telefone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Telefone"
@@ -59,7 +56,6 @@
                 style="@style/Descricao_texto"/>
 
         <TextView
-            android:id="@+id/telefoneCel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/celular"
@@ -73,10 +69,9 @@
                 style="@style/Descricao_texto"/>
 
         <TextView
-            android:id="@+id/local"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/text_local"
+            android:text="@string/v_local"
             style="@style/Descricao_texto"/>
 
             <TextView
@@ -87,7 +82,6 @@
                 style="@style/Descricao_texto"/>
 
         <TextView
-            android:id="@+id/observacoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/obs_cliente"

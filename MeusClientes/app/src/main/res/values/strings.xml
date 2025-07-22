@@ -23,4 +23,6 @@
     <string name="email">Email</string>
     <string name="celular">Celular</string>
     <string name="obs_cliente">Observações</string>
+    <string name="v_local">Local do Cliente</string>
+
 </resources>

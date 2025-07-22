@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +17,15 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class CadastrarCliente extends Fragment {
+
+    private EditText edtNome;
+    private EditText edtEmail;
+    private EditText edtTelefone;
+    private EditText edtTelefoneCel;
+    private EditText edtLocal;
+    private EditText edtObservacoes;
+    private Button btn_cadastrar;
+    private Button btn_cancelar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,5 +72,72 @@ public class CadastrarCliente extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_cadastrar_cliente, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        edtNome = view.findViewById(R.id.nome);
+        edtEmail = view.findViewById(R.id.email);
+        edtTelefone = view.findViewById(R.id.telefone);
+        edtTelefoneCel = view.findViewById(R.id.telefoneCel);
+        edtLocal = view.findViewById(R.id.local);
+        edtObservacoes = view.findViewById(R.id.observacoes);
+        btn_cadastrar = view.findViewById(R.id.btn_cadastrar);
+        btn_cancelar = view.findViewById(R.id.btn_cancelar);
+
+        btn_cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String nome = edtNome.getText().toString();
+                String email = edtEmail.getText().toString();
+                String telefone = edtTelefone.getText().toString();
+                String telefoneCel = edtTelefoneCel.getText().toString();
+                String local = edtLocal.getText().toString();
+                String observacoes = edtObservacoes.getText().toString();
+
+
+                if (nome.isEmpty() || email.isEmpty() || telefoneCel.isEmpty()) {
+                    return;
+                }
+
+                Cliente cliente = new Cliente();
+                cliente.setNome(nome);
+                cliente.setEmail(email);
+                cliente.setTelefone(telefone);
+                cliente.setTelefoneCel(telefoneCel);
+                cliente.setLocal(local);
+                cliente.setObservacoes(observacoes);
+
+                BDClientes bdClientes = BDClientes.getInstance(getContext());
+                BDClientes.databaseWriteExecutor.execute(() -> {
+                    // Esta operação roda em background
+                    bdClientes.daoCliente().inserir(cliente);
+
+                    getActivity().runOnUiThread(() -> {
+                        // Esta operação roda na UI Thread
+                        Toast.makeText(getContext(), "Cliente cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                        limparCampos();
+                    });
+                });
+            }
+        });
+        btn_cancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                limparCampos();
+            }
+        });
+    }
+    private void limparCampos() {
+        edtNome.setText("");
+        edtEmail.setText("");
+        edtTelefone.setText("");
+        edtTelefoneCel.setText("");
+        edtLocal.setText("");
+        edtObservacoes.setText("");
+        edtNome.requestFocus(); // Opcional: focar no primeiro campo novamente
     }
 }

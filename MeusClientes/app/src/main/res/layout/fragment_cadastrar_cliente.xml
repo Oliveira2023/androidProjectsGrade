@@ -94,6 +94,7 @@
         android:id="@+id/observacoes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
         android:hint="@string/hint_observacoes"/>
 
         <LinearLayout

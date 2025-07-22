@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +16,14 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ViewCliente extends Fragment {
+
+    private EditText edtNome;
+    private EditText edtEmail;
+    private EditText edtTelefone;
+    private EditText edtTelefoneCel;
+    private EditText edtLocal;
+    private EditText edtObservacoes;
+    private Button btn_cadastrar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
