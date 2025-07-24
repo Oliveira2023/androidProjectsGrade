@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/fragment_cadastrar"
     android:layout_marginHorizontal="15dp"
     tools:context=".CadastrarCliente">
 
@@ -33,6 +34,8 @@
             android:id="@+id/nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:autofillHints="name"
             android:hint="@string/hint_nome"/>
 
 
@@ -46,6 +49,8 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:autofillHints="email"
             android:hint="@string/hint_email"/>
 
     <TextView
@@ -58,6 +63,8 @@
         android:id="@+id/telefone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:autofillHints="phone"
+        android:inputType="number"
         android:hint="@string/hint_telefone"/>
 
     <TextView

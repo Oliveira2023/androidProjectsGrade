@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link CadastrarCliente#newInstance} factory method to
@@ -116,7 +118,7 @@ public class CadastrarCliente extends Fragment {
                     // Esta operação roda em background
                     bdClientes.daoCliente().inserir(cliente);
 
-                    getActivity().runOnUiThread(() -> {
+                    Objects.requireNonNull(getActivity()).runOnUiThread(() -> {
                         // Esta operação roda na UI Thread
                         Toast.makeText(getContext(), "Cliente cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
                         limparCampos();

@@ -6,6 +6,21 @@
     android:orientation="vertical"
     tools:context=".ViewCliente">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            >
+
+
     <!-- TODO: Update blank fragment layout -->
         <TextView
             android:id="@+id/detalhesCliente"
@@ -13,12 +28,15 @@
             android:layout_height="wrap_content"
             android:text="@string/detalhes_do_cliente"
             android:textSize="22sp"
+            android:layout_marginBottom="33dp"
+            android:textColor="?android:attr/textColorPrimary"
             android:textAlignment="center" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/nome_do_cliente"
+            android:textColor="?android:attr/textColorPrimary"
             style="@style/Descricao_texto"/>
 
             <TextView
@@ -26,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:layout_marginBottom="22dp"
                 style="@style/Descricao_texto"/>
 
         <TextView
@@ -39,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:layout_marginBottom="22dp"
                 style="@style/Descricao_texto"/>
 
 
@@ -53,6 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:layout_marginBottom="22dp"
                 style="@style/Descricao_texto"/>
 
         <TextView
@@ -66,6 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:layout_marginBottom="22dp"
                 style="@style/Descricao_texto"/>
 
         <TextView
@@ -79,6 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:layout_marginBottom="22dp"
                 style="@style/Descricao_texto"/>
 
         <TextView
@@ -92,9 +115,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
+                android:layout_marginBottom="22dp"
                 style="@style/Descricao_texto"/>
 
-        <LinearLayout
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -102,7 +130,7 @@
 
             <Button
                 android:id="@+id/btn_anterior"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Anterior"
                 android:drawableLeft="@drawable/baseline_arrow_left_24"
@@ -110,7 +138,7 @@
                 android:layout_weight="1" />
             <Button
                 android:id="@+id/btn_proximo"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Próximo"
                 android:drawableRight="@drawable/outline_arrow_right_24"
@@ -118,26 +146,27 @@
 
         </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginHorizontal="5dp">
             <Button
                 android:id="@+id/btn_editar"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Editar"
+                android:text="Cadastrar"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="1" />
             <Button
                 android:id="@+id/btn_excluir"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Excluir"
                 android:layout_weight="1" />
 
-        </LinearLayout>
+</LinearLayout>
 
 </LinearLayout>

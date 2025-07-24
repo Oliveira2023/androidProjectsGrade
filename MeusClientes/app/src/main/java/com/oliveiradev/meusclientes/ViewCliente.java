@@ -2,6 +2,7 @@ package com.oliveiradev.meusclientes;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,13 +19,16 @@ import android.widget.EditText;
  */
 public class ViewCliente extends Fragment {
 
-    private EditText edtNome;
-    private EditText edtEmail;
-    private EditText edtTelefone;
-    private EditText edtTelefoneCel;
-    private EditText edtLocal;
-    private EditText edtObservacoes;
+    private TextView edtNome;
+    private TextView edtEmail;
+    private TextView edtTelefone;
+    private TextView edtTelefoneCel;
+    private TextView edtLocal;
+    private TextView edtObservacoes;
+    private Button btn_anterior;
+    private Button btn_proximo;
     private Button btn_cadastrar;
+    private Button btn_excluir;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,5 +75,55 @@ public class ViewCliente extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_view_cliente, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        edtNome = requireActivity().findViewById(R.id.nomeCliente);
+        edtEmail = view.findViewById(R.id.emailCliente);
+        edtTelefone = view.findViewById(R.id.telefoneCliente);
+        edtTelefoneCel = view.findViewById(R.id.celularCliente);
+        edtLocal = view.findViewById(R.id.localCliente);
+        edtObservacoes = view.findViewById(R.id.observacoesCliente);
+        btn_anterior = view.findViewById(R.id.btn_anterior);
+        btn_proximo = view.findViewById(R.id.btn_proximo);
+        btn_cadastrar = view.findViewById(R.id.btn_cadastrar);
+        btn_excluir = view.findViewById(R.id.btn_excluir);
+
+        btn_anterior.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+
+
+        });
+
+        btn_proximo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btn_cadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.main, new CadastrarCliente())
+                        .commit();
+            }
+        });
+
+        btn_excluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
     }
 }
