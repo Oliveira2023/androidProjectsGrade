@@ -9,8 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,16 +20,18 @@ import android.widget.TextView;
  */
 public class ViewCliente extends Fragment {
 
-    private TextView edtNome;
-    private TextView edtEmail;
-    private TextView edtTelefone;
-    private TextView edtTelefoneCel;
-    private TextView edtLocal;
-    private TextView edtObservacoes;
+    private TextView nome;
+    private TextView email;
+    private TextView telefone;
+    private TextView telefoneCel;
+    private TextView local;
+    private TextView observacoes;
     private Button btn_anterior;
     private Button btn_proximo;
     private Button btn_cadastrar;
     private Button btn_excluir;
+    private List<Cliente> listaClientes;
+    private int posicao = 0;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,49 +84,80 @@ public class ViewCliente extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        edtNome = requireActivity().findViewById(R.id.nomeCliente);
-        edtEmail = view.findViewById(R.id.emailCliente);
-        edtTelefone = view.findViewById(R.id.telefoneCliente);
-        edtTelefoneCel = view.findViewById(R.id.celularCliente);
-        edtLocal = view.findViewById(R.id.localCliente);
-        edtObservacoes = view.findViewById(R.id.observacoesCliente);
+        nome = view.findViewById(R.id.nomeCliente);
+        email = view.findViewById(R.id.emailCliente);
+        telefone = view.findViewById(R.id.telefoneCliente);
+        telefoneCel = view.findViewById(R.id.celularCliente);
+        local = view.findViewById(R.id.localCliente);
+        observacoes = view.findViewById(R.id.observacoesCliente);
         btn_anterior = view.findViewById(R.id.btn_anterior);
         btn_proximo = view.findViewById(R.id.btn_proximo);
         btn_cadastrar = view.findViewById(R.id.btn_cadastrar);
         btn_excluir = view.findViewById(R.id.btn_excluir);
 
+        BDClientes bdClientes = BDClientes.getInstance(getContext());
+        listaClientes = bdClientes.daoCliente().listarClientes();
+
+        proximoCliente(posicao);
+
         btn_anterior.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (posicao > 0) {
+                    posicao -= 1;
+                    proximoCliente(posicao);
+                }
             }
-
 
         });
 
         btn_proximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (listaClientes.size() > 0 && posicao < listaClientes.size() - 1) {
+                    posicao += 1;
+                    proximoCliente(posicao);
+                }
             }
         });
-
-        btn_cadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getParentFragmentManager().beginTransaction()
-                        .replace(R.id.main, new CadastrarCliente())
-                        .commit();
-            }
-        });
+        if (btn_cadastrar != null) {
+            btn_cadastrar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getParentFragmentManager().beginTransaction()
+                            .replace(R.id.main, new CadastrarCliente())
+                            .commit();
+                }
+            });
+        }
 
         btn_excluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (listaClientes.size() > 0) {
+                    Cliente cliente = listaClientes.get(posicao);
+                    int id = cliente.getId();
+                    BDClientes.databaseWriteExecutor.execute(() -> {
+                        bdClientes.daoCliente().excluirCliente(cliente);
+                        listaClientes = bdClientes.daoCliente().listarClientes();
+                        posicao = 0;
+                        proximoCliente(posicao);
+                    });
+                }
 
             }
         });
+    }
 
-
+    private void proximoCliente(int posicao) {
+        if (!listaClientes.isEmpty()) {
+            Cliente cliente = listaClientes.get(posicao);
+            nome.setText(cliente.getNome());
+            email.setText(cliente.getEmail());
+            telefone.setText(cliente.getTelefone());
+            telefoneCel.setText(cliente.getTelefoneCel());
+            local.setText(cliente.getLocal());
+            observacoes.setText(cliente.getObservacoes());
+        }
     }
 }

@@ -1,9 +1,11 @@
 package com.oliveiradev.meusclientes;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +22,12 @@ import java.util.Objects;
  */
 public class CadastrarCliente extends Fragment {
 
-    private EditText edtNome;
-    private EditText edtEmail;
-    private EditText edtTelefone;
-    private EditText edtTelefoneCel;
-    private EditText edtLocal;
-    private EditText edtObservacoes;
+    private EditText Nome;
+    private EditText Email;
+    private EditText Telefone;
+    private EditText TelefoneCel;
+    private EditText Local;
+    private EditText Observacoes;
     private Button btn_cadastrar;
     private Button btn_cancelar;
 
@@ -80,66 +82,83 @@ public class CadastrarCliente extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        edtNome = view.findViewById(R.id.nome);
-        edtEmail = view.findViewById(R.id.email);
-        edtTelefone = view.findViewById(R.id.telefone);
-        edtTelefoneCel = view.findViewById(R.id.telefoneCel);
-        edtLocal = view.findViewById(R.id.local);
-        edtObservacoes = view.findViewById(R.id.observacoes);
+        Nome = view.findViewById(R.id.edtNome);
+        Email = view.findViewById(R.id.edtEmail);
+        Telefone = view.findViewById(R.id.edtTelefone);
+        TelefoneCel = view.findViewById(R.id.edtTelefoneCel);
+        Local = view.findViewById(R.id.edtLocal);
+        Observacoes = view.findViewById(R.id.edtObservacoes);
         btn_cadastrar = view.findViewById(R.id.btn_cadastrar);
         btn_cancelar = view.findViewById(R.id.btn_cancelar);
 
-        btn_cadastrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (btn_cadastrar != null) {
+            System.out.println("btn_cadastrar não é nulo");
+            btn_cadastrar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Nome == null) {
+                        Log.e("CadastroCliente", "EditText Nome é NULO no clique!");
+                        Toast.makeText(getContext(), "Erro: Campo Nome não encontrado.", Toast.LENGTH_LONG).show();
+                        return; // Impede a continuação
+                    }
+                    String nome = Nome.getText().toString();
+                    String email = Email.getText().toString();
+                    String telefone = Telefone.getText().toString();
+                    String telefoneCel = TelefoneCel.getText().toString();
+                    String local = Local.getText().toString();
+                    String observacoes = Observacoes.getText().toString();
 
-                String nome = edtNome.getText().toString();
-                String email = edtEmail.getText().toString();
-                String telefone = edtTelefone.getText().toString();
-                String telefoneCel = edtTelefoneCel.getText().toString();
-                String local = edtLocal.getText().toString();
-                String observacoes = edtObservacoes.getText().toString();
 
+                    if (nome.isEmpty() || email.isEmpty() || telefoneCel.isEmpty()) {
 
-                if (nome.isEmpty() || email.isEmpty() || telefoneCel.isEmpty()) {
-                    return;
-                }
+                        Toast.makeText(getContext(), "Preencha todos os campos obrigatórios.", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
 
-                Cliente cliente = new Cliente();
-                cliente.setNome(nome);
-                cliente.setEmail(email);
-                cliente.setTelefone(telefone);
-                cliente.setTelefoneCel(telefoneCel);
-                cliente.setLocal(local);
-                cliente.setObservacoes(observacoes);
+                    Cliente cliente = new Cliente();
+                    cliente.setNome(nome);
+                    cliente.setEmail(email);
+                    cliente.setTelefone(telefone);
+                    cliente.setTelefoneCel(telefoneCel);
+                    cliente.setLocal(local);
+                    cliente.setObservacoes(observacoes);
 
-                BDClientes bdClientes = BDClientes.getInstance(getContext());
-                BDClientes.databaseWriteExecutor.execute(() -> {
-                    // Esta operação roda em background
-                    bdClientes.daoCliente().inserir(cliente);
+                    Context context = getContext();
+                    if (context == null) {
+                        Log.e("CadastroCliente", "Contexto é NULO ao tentar obter BD!");
+                        return;
+                    }
+                    BDClientes bdClientes = BDClientes.getInstance(getContext());
+                    BDClientes.databaseWriteExecutor.execute(() -> {
+                        // Esta operação roda em background
+                        bdClientes.daoCliente().inserir(cliente);
 
-                    Objects.requireNonNull(getActivity()).runOnUiThread(() -> {
-                        // Esta operação roda na UI Thread
-                        Toast.makeText(getContext(), "Cliente cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
-                        limparCampos();
+                        requireActivity().runOnUiThread(() -> {
+                            // Esta operação roda na UI Thread
+                            Toast.makeText(getContext(), "Cliente cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                            limparCampos();
+                        });
                     });
-                });
-            }
-        });
+                }
+            });
+        }
         btn_cancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 limparCampos();
+                getParentFragmentManager().beginTransaction()
+                        .replace(R.id.main, new ViewCliente())
+                        .commit();
             }
         });
     }
     private void limparCampos() {
-        edtNome.setText("");
-        edtEmail.setText("");
-        edtTelefone.setText("");
-        edtTelefoneCel.setText("");
-        edtLocal.setText("");
-        edtObservacoes.setText("");
-        edtNome.requestFocus(); // Opcional: focar no primeiro campo novamente
+        Nome.setText("");
+        Email.setText("");
+        Telefone.setText("");
+        TelefoneCel.setText("");
+        Local.setText("");
+        Observacoes.setText("");
+        Nome.requestFocus(); // Opcional: focar no primeiro campo novamente
     }
 }
