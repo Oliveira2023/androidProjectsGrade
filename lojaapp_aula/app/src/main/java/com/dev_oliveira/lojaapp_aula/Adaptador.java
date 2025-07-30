@@ -26,10 +26,10 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull Adaptador.ViewHolder holder, int position) {
-        //recupera um produto do objeto List de acordo com a posçição recebijda no parâmetro
+        //recupera um produto do objeto List de acordo com a posçição recebida no parâmetro
 
         Product produto = productList.get(position);
-        // exibimos os dados ddo item para o usuário através da referências criadas no vieewholder
+        // exibimos os dados ddo item para o usuário através da referências criadas no viewholder
         holder.textviewDescricao.setText(produto.getDescricao());
         holder.textviewPreco.setText(String.format(Locale.getDefault(), "R$ %.2f", produto.getPreco()));
         holder.imageView.setImageResource(produto.getImagRes());
@@ -61,5 +61,18 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
         notifyDataSetChanged();
     }
 
+    public void inserir(Product produto){
+        productList.add(produto);
+        int position = this.productList.size()-1;
+        notifyItemInserted(position);
+    }
+    public void remover(int posicao){
+        productList.remove(posicao);
+        notifyItemRemoved(posicao);
+    }
+    public void editar(Product produto, int posicao){
+        productList.set(posicao, produto);
+        notifyItemChanged(posicao);
+    }
 
 }
