@@ -25,55 +25,68 @@ public class Aluno {
      */
     public static final List<Aluno> ALUNOS = new ArrayList<Aluno>();
 
-    /**
-     * A map of sample (placeholder) items, by ID.
-     */
-    public static final Map<String, PlaceholderItem> ITEM_MAP = new HashMap<String, PlaceholderItem>();
 
-    private static final int COUNT = 25;
-
-    static {
-        // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createPlaceholderItem(i));
-        }
+    public Aluno (String nome, int idade, double altura, double peso, String unidade) {
+        this.ID = ALUNOS.size();
+        this.nome = nome;
+        this.idade = idade;
+        this.altura = altura;
+        this.peso = peso;
+        this.unidade = unidade;
     }
 
-    private static void addItem(PlaceholderItem item) {
-        ITEMS.add(item);
-        ITEM_MAP.put(item.id, item);
+    public Aluno (String nome, int idade, String unidade) {
+        this.ID = ALUNOS.size();
+        this.nome = nome;
+        this.idade = idade;
+        this.unidade = unidade;
     }
 
-    private static PlaceholderItem createPlaceholderItem(int position) {
-        return new PlaceholderItem(String.valueOf(position), "Item " + position, makeDetails(position));
+    public int getID() {
+        return ID;
     }
 
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    /**
-     * A placeholder item representing a piece of content.
-     */
-    public static class PlaceholderItem {
-        public final String id;
-        public final String nome;
-        public final String details;
+    public String getNome() {
+        return nome;
+    }
 
-        public PlaceholderItem(String id, String content, String details) {
-            this.id = id;
-            this.content = content;
-            this.details = details;
-        }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-        @Override
-        public String toString() {
-            return content;
-        }
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public double getAltura() {
+        return altura;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
     }
 }

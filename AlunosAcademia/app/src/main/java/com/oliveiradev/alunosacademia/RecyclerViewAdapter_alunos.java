@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class RecyclerViewAdapter_alunos extends RecyclerView.Adapter<RecyclerViewAdapter_alunos.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private final List<Aluno> mValues;
 
     public RecyclerViewAdapter_alunos(List<Aluno> alunos) {
         mValues = alunos;
