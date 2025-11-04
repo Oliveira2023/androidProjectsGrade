@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Alunos Academia</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="cadastro_fragment_title">Cadastro de Alunos</string>
+</resources>

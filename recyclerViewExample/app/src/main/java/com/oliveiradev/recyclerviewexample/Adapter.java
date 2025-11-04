@@ -48,4 +48,20 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             mTextViewValor = itemView.findViewById(R.id.textViewValor);
         }
     }
+    public void atualizarListagemCompleta(List<Produto> listProdutos) {
+        mListProdutos = listProdutos;
+        notifyDataSetChanged();
+    }
+    public void inserirItemNaListagem(int position, List<Produto> listProdutos) {
+        mListProdutos = listProdutos;
+        notifyItemInserted(position);
+    }
+    public void atualizarItemNaListagem(int position, List<Produto> listProdutos) {
+        mListProdutos = listProdutos;
+        notifyItemChanged(position);
+    }
+    public void removerItemNaListagem(int position, List<Produto> listProdutos) {
+        mListProdutos = listProdutos;
+        notifyItemRemoved(position);
+    }
 }
