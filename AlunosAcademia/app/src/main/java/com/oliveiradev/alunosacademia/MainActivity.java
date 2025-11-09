@@ -1,14 +1,21 @@
 package com.oliveiradev.alunosacademia;
 
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button btnAlunos;
+    private Button btnCadastro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +27,28 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        btnAlunos = findViewById(R.id.btn_alunos);
+        btnCadastro = findViewById(R.id.btn_cadastro);
+
+        // Carrega o fragmento inicial
+        if (savedInstanceState == null) {
+            replaceFragment(new ListagemFragment());
+        }
+
+        btnAlunos.setOnClickListener(v -> {
+            replaceFragment(new ListagemFragment());
+        });
+
+        btnCadastro.setOnClickListener(v -> {
+            replaceFragment(new CadastroFragment());
+        });
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container_view, fragment);
+        fragmentTransaction.commit();
     }
 }

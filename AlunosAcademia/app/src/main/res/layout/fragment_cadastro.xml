@@ -4,69 +4,109 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".CadastroFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textSize="22dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/cadastro_fragment_title"
         android:textAlignment="center"
-        android:text="@string/cadastro_fragment_title" />
+        android:textSize="22sp" />
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1">
+
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
-
+                android:text="@string/label_nome"/>
             <EditText
+                android:id="@+id/edit_text_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment"
-                />
+                android:layout_marginBottom="8dp"
+                android:hint="@string/hint_nome"
+                android:inputType="textPersonName" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/idade"/>
             <EditText
+                android:id="@+id/edit_text_idade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                android:layout_marginBottom="8dp"
+                android:hint="@string/digite_a_idade"
+                android:inputType="number" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/altura"/>
             <EditText
+                android:id="@+id/edit_text_altura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                android:layout_marginBottom="8dp"
+                android:hint="@string/digite_a_altura"
+                android:inputType="numberDecimal" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/peso"/>
             <EditText
+                android:id="@+id/edit_text_peso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/hello_blank_fragment" />
+                android:layout_marginBottom="8dp"
+                android:hint="Digite o peso"
+                android:inputType="numberDecimal" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unidade_de_cadastro"/>
+            <EditText
+                android:id="@+id/edit_text_data_nascimento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Digite a unidade de cadastro"
+                android:inputType="text" />
 
         </LinearLayout>
-
     </ScrollView>
+
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
-            android:layout_width="match_parent"
+            android:id="@+id/button_salvar"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="@string/button_salvar" />
+
         <Button
-            android:layout_width="match_parent"
+            android:id="@+id/button_cancelar"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment" />
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="@string/button_cancelar" />
     </LinearLayout>
-
-
 
 </LinearLayout>

@@ -1,5 +1,25 @@
 <resources>
     <string name="app_name">Alunos Academia</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="cadastro_fragment_title">Cadastro de Alunos</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_salvar">Salvar</string>
+    <string name="button_cancelar">Cancelar</string>
+    <string name="label_nome">Nome:</string>
+    <string name="label_endereco">Endereço:</string>
+    <string name="label_telefone">Telefone:</string>
+    <string name="label_email">Email:</string>
+    <string name="label_data_nascimento">Data de Nascimento:</string>
+    <string name="hint_nome">Digite o nome do aluno</string>
+    <string name="hint_endereco">Digite o endereço</string>
+    <string name="hint_telefone">Digite o telefone</string>
+    <string name="hint_email">Digite o e-mail</string>
+    <string name="hint_data_nascimento">DD/MM/AAAA</string>
+    <string name="alunos_button">Alunos</string>
+    <string name="cadastro_button">Cadastro</string>
+    <string name="idade">idade</string>
+    <string name="digite_a_idade">Digite a iddade</string>
+    <string name="altura">Altura</string>
+    <string name="digite_a_altura">Digite a altura</string>
+    <string name="peso">Peso</string>
+    <string name="unidade_de_cadastro">Unidade de Cadastro</string>
 </resources>
