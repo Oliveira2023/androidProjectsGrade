@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/unidade_de_cadastro"/>
             <EditText
-                android:id="@+id/edit_text_data_nascimento"
+                android:id="@+id/edit_text_unidade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Digite a unidade de cadastro"

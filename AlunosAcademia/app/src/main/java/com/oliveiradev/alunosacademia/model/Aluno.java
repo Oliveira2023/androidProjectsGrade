@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Helper class for providing sample content for user interfaces created by
@@ -41,6 +42,7 @@ public class Aluno {
         this.idade = idade;
         this.unidade = unidade;
     }
+    public Aluno (){}
 
     public int getID() {
         return ID;
@@ -88,5 +90,17 @@ public class Aluno {
 
     public void setUnidade(String unidade) {
         this.unidade = unidade;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Aluno aluno = (Aluno) o;
+        return ID == aluno.ID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(ID);
     }
 }

@@ -22,10 +22,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.oliveiradev.alunosacademia" />
+                  <option name="mobileSdkAppId" value="1:1031634287640:android:5234d7a5a31994c2fc976d" />
+                  <option name="projectId" value="alunosacademia-603f9" />
+                  <option name="projectNumber" value="1031634287640" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
